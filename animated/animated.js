@@ -102,7 +102,7 @@ document.addEventListener('click', function(event) {
     if (!introFinished) { return; }
 
     // If the animation is already running, return
-    if(isAnimating) return;
+    if(isAnimating) { return; }
     isAnimating = true;
     setTimeout(() => isAnimating = false, 750);
 
