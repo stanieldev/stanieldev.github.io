@@ -1,7 +1,13 @@
 // Create a new objected called MoveableHTMLElement that extends the HTMLElement class
 // The constructor takes in an HTML element as a parameter
 
-enum Origin {
+
+
+function calc(value: string) { return `calc(${value})`; }
+function sCalc(value: string) { return value.substring(5, value.length - 1); } // Strip calc function
+
+
+export enum Origin {
     Absolute,
     Relative,
     Self,
@@ -9,10 +15,16 @@ enum Origin {
     Default
 }
 
-class MoveableHTMLElement extends HTMLElement {
+export class MoveableHTMLElement extends HTMLElement {
     
     // The constructor takes in an HTML element as a parameter
-    constructor(element: HTMLElement) { super(); }
+    constructor(element: HTMLElement) { 
+        super();
+        this.style.left = element.getAttribute("x0")!;
+        this.style.top = element.getAttribute("y0")!;
+        this.style.width = element.getAttribute("width")!;
+        this.style.height = element.getAttribute("height")!;
+    }
 
     // Getters and setters for the default position
     get x0(): string { return this.getAttribute("x0")!; }
